@@ -1,0 +1,36 @@
+<main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-alarm-fill">&nbsp;</span>Departs <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+    &nbsp;<nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Départs</li>
+        </ol>
+      </nav>
+    
+                <div class="card" style="width: 110%;">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #3545b8">
+                        <h3>Liste des Départs</h3>
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-16  " style=" background: white; border: 1px; width:100%"> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Depart</th>
+                                <th scope="col">Voiture</th>
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let dep of departs">
+                                        <td>{{dep.dateHeure}}  /  {{dep.destination}}</td>
+                                        <td>{{dep.type}} / {{dep.matricule}}</td>
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>

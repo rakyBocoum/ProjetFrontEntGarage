@@ -1,0 +1,63 @@
+<body>
+    <main  style="color:darkblue" id="main" class="main">
+    <h1 style="color:darkblue;" class="text-primary"><span class="bi bi-person-badge">&nbsp;</span>Liste des Passagers du depart <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> 
+        <!-- <span class="text-primary">{{depart.destination}} {{depart.dateHeure}}</span> -->
+    </span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Passager</li>
+        </ol>
+      </nav>
+            <div  style="color:darkblue;">
+                <div class="card"  style="color:darkblue;">
+                    <div class="card-header justify-content-between" style="border-top:4px solid  #0e09a1">
+                        <!-- <h3>Liste des Passagers 
+                             <span class="text-danger">{{depart.destination}} {{depart.dateHeure}}</span> 
+                        </h3> -->
+                    </div>
+                        <div  style="color:darkblue;" class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Adresse</th>
+                                <th scope="col">Téléphone</th>
+                                <th scope="col">CNI</th>
+                                <th scope="col">Action</th>
+                    
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let passager of passagers">
+                                        <td>{{passager.prenom}}</td>
+                                        <td>{{passager.nom}}</td>
+                                        <td>{{passager.adresse}}</td>
+                                        <td>{{passager.telephone}} </td>
+                                        <td>{{passager.Cni}} </td>
+                                        
+                                        
+                                        <td>
+                                           
+                                            
+                                            <button (click)="deletePassagerDepart(depart.voiture_id,depart.dateHeure,passager.id,depart.destination)"  class="btn btn-danger " ><span class="bi bi-trash-fill"></span></button>&nbsp;&nbsp;
+                                            <a href="/home/ajouterBagage?id={{passager.id}}&date={{dateHeure}}" class="btn btn-success"><span class="bi bi-bag-plus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <a href="/home/bagage?id={{passager.id}}" class="btn btn-secondary"><span class="bi bi-bag-plus-fill"></span></a>&nbsp;&nbsp;
+                                            
+                                           
+                                        </td>
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+      
+    
+    
+    <main>

@@ -14,6 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/garage-front",
+            "allowedCommonJsDependencies": ["sweetalert2"],
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,9 +26,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+                "node_modules/font-awesome/css/font-awesome.min.css",
+                "src/styles.css"
+             
             ],
-            "scripts": []
+            "scripts": ["node_modules/sweetalert2/dist/sweetalert2.all.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -43,7 +48,12 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "scripts": [
+                "node_modules/sweetalert2/dist/sweetalert2.all.min.js"
+                
+              ]
+              
             },
             "development": {
               "buildOptimizer": false,
@@ -51,7 +61,10 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "scripts": [
+                "node_modules/sweetalert2/dist/sweetalert2.all.min.js"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -94,5 +107,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "4f79e40e-7d1b-43fa-b36a-8e1d7b2f18ce"
   }
 }
+

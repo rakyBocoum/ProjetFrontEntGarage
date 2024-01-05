@@ -1,0 +1,227 @@
+<div class="container">
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom style">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use xlink:href="#bootstrap" />
+            </svg>
+            <img style="width: 350px; height: 150px;" src="assets/img/SUNU-GARAGE-1--unscreen.gif"
+                alt="Logo de l'application" />
+  
+        </a>
+  
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="btn btn-outline-primary me-2" aria-current="page">Accueil</a></li>
+            <li class="nav-item"><a href="#" class="btn btn-outline-primary me-2">A Propos</a></li>
+            <li class="nav-item"><a href="#" class="btn btn-outline-primary me-2">Nos contacts</a></li>
+  
+        </ul>
+  
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2">
+                <a [routerLink]="['/login']" >Connexion</a></button>
+            <button type="button"class="btn btn-outline-primary me-2" >
+                <a [routerLink]="['/register']" > S'inscrire </a></button>
+        </div>
+    </header>
+  </div>
+
+
+
+<main>
+    <div class="container  min-vh-100   d-flex justify-content-center align-items-center p-2 text-dark bg-opacity-10  shadow-lg p-3 mb-10  rounded "  >
+    <div class="container">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
+            >
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <!-- <img src="assets/img/logo.png" alt=""> -->
+                                <span class="d-none d-lg-block">SunuGarage</span>
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Créer un compte</h5>
+                                    <p class="text-center small">Renseigner vos données personnelles pour s'inscrire</p>
+                                </div>
+
+                                <form class="row g-3 needs-validation" #userForm="ngForm" (ngSubmit)="registerUser()"
+                                    novalidate style="width: 500px;">
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Prenom</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="text" name="prenom" required
+                                            [class.is-invalid]="prenom.invalid && prenom.touched "
+                                            [class.is-valid]="prenom.valid" #prenom="ngModel" [(ngModel)]="user.prenom"
+                                            tabindex="1" class="form-control" placeholder="Prenom" pattern="[A-Za-z ]+"  minlength="2" >
+                                        <small class="text-danger" [class.d-none]=" prenom.untouched || prenom.valid">
+                                            Veuillez saisir votre prenom </small>
+                                            <small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">
+                                                Veuillez saisir uniquement des lettres.</small>
+                                                <small class="text-danger" [class.d-none]="!prenom.hasError('minlength')">
+                                                    Le prenom doit contenir au moins deux lettres.</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Nom</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="text" name="nom" id="nom" required
+                                            [class.is-invalid]="nom.invalid && nom.touched "
+                                            [class.is-valid]="nom.valid" #nom="ngModel" [(ngModel)]="user.nom"
+                                            tabindex="2" class="form-control" placeholder="Nom" pattern="[A-Za-z ]+"  minlength="2">
+                                        <small class="text-danger" [class.d-none]=" nom.untouched || nom.valid ">
+                                            Veuillez saisir votre nom </small>
+                                            <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">
+                                                Veuillez saisir uniquement des lettres.</small>
+                                                <small class="text-danger" [class.d-none]="!nom.hasError('minlength')">
+                                                    Le nom doit contenir au moins deux lettres.</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourAdress" class="form-label">Adresse</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="text" name="adresse" id="adresse" required
+                                            [class.is-invalid]="adresse.invalid && adresse.touched "
+                                            [class.is-valid]="adresse.valid" #adresse="ngModel"
+                                            [(ngModel)]="user.adresse" tabindex="2" class="form-control"
+                                            placeholder="Adresse" pattern="[A-Za-z ]+"  minlength="2">
+                                        <small class="text-danger" [class.d-none]="adresse.untouched || adresse.valid">
+                                            Veuillez saisir votre adresse </small>
+                                            <small class="text-danger" [class.d-none]="adresse.valid || adresse.untouched">
+                                                Veuillez saisir uniquement des lettres.</small>
+                                                <small class="text-danger" [class.d-none]="!adresse.hasError('minlength')">
+                                                    L'adresse doit contenir au moins deux lettres.</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourTelephon" class="form-label">Telephone</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="telephone" name="telephone" id="telephone" required
+                                            [class.is-invalid]="telephone.invalid && telephone.touched "
+                                            [class.is-valid]="telephone.valid" #telephone="ngModel"
+                                            [(ngModel)]="user.telephone" tabindex="2" class="form-control"
+                                            placeholder="Telephone" pattern="[7-9][0-9]{8}" minlength="9" maxlength="9">
+                                        <small class="text-danger"
+                                            [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir
+                                            votre numero de téléphone </small>
+                                            <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">
+                                                Veuillez saisir un numéro de téléphone valide.</small>
+                                            <small class="text-danger" [class.d-none]="!telephone.hasError('pattern')">
+                                                Le numéro de téléphone doit commencer par 7 et être composé de 9 chiffres.</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourCni" class="form-label">Cni</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="Cni" name="Cni" id="Cni" required
+                                            [class.is-invalid]="Cni.invalid && Cni.touched "
+                                            [class.is-valid]="Cni.valid" #Cni="ngModel" [(ngModel)]="user.Cni"
+                                            tabindex="2" class="form-control" placeholder="Cni" pattern="[0-9]*"minlength="13" maxlength="13">
+
+                                        <small class="text-danger" [class.d-none]=" Cni.untouched || Cni.valid">
+                                            Veuillez saisir
+                                            votre numero de carte d'identite </small>
+                                            <small class="text-danger" [class.d-none]="Cni.valid || Cni.untouched">
+                                                Veuillez saisir uniquement des chiffres.</small>
+                                                <small class="text-danger" [class.d-none]="Cni.valid || Cni.untouched">
+                                                    Le Cni doit comporter 13 chiffres.</small>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label">Email</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="email" name="email" id="email" (keyup)="emailVerif(email.value)"
+                                            required
+                                            [class.is-invalid]="emailError || (email.invalid && email.touched ) "
+                                            [class.is-valid]="email.valid" #email="ngModel" [(ngModel)]="user.email"
+                                            tabindex="2" class="form-control" placeholder="Email">
+                                        <div *ngIf="emailError || (email.touched && email.invalid)">
+                                            <small class="text-danger" [class.d-none]=" email.untouched || email.valid">
+                                                Veuillez saisir votre email </small>
+                                            <small class="text-danger"
+                                                [class.d-none]="!emailError || email.value == ''"> Veuillez saisir
+                                                l'email au bon format</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="password">Mot de Passe</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="password" name="password" id="password"
+                                            (keyup)="passwordLengthVerif(password.value)" required
+                                            [class.is-invalid]="passError || (password.invalid && password.touched )"
+                                            [class.is-valid]="password.valid" #password="ngModel"
+                                            [(ngModel)]="user.password" tabindex="2" class="form-control"
+                                            placeholder="Password">
+                                        <div *ngIf="passError || (password.touched && password.invalid)">
+                                            <small class="text-danger"
+                                                [class.d-none]="password.untouched || password.valid"> Veuillez remplir
+                                                ce champ</small>
+                                            <small class="text-danger"
+                                                [class.d-none]="!passError || password.value == ''"> Minimun 6
+                                                caractéres</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="confirm-password">Confirmer votre mot de passe</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="password"
+                                            (keyup)="passwordConfirmVerif(password.value, passwordC.value)" required
+                                            [class.is-invalid]="passConfError || (passwordC.invalid && passwordC.touched )"
+                                            [class.is-valid]="passwordC.valid" class="form-control" id="passwordC"
+                                            #passwordC="ngModel" [(ngModel)]="passConf"
+                                            placeholder="Confirmer le password" name="passwordC">
+                                        <div *ngIf="passConfError || (passwordC.touched && passwordC.invalid)">
+                                            <small class="text-danger"
+                                                [class.d-none]=" passwordC.untouched || passwordC.valid"> Veuillez
+                                                confirmer votre mot de passe </small>
+                                            <small class="text-danger"
+                                                [class.d-none]="!passConfError || passwordC.value == ''">les deux
+                                                mots de passes ne sont pas identiques</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="terms" type="checkbox" value=""
+                                                id="acceptTerms" required>
+                                            <label class="form-check-label" for="acceptTerms">I agree and accept the
+                                                <a href="#">terms and conditions</a></label>
+                                            <div class="invalid-feedback">You must agree before submitting.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <input [disabled]="userForm.form.invalid || passConfError || emailError"
+                                            type="submit" tabindex="4" class="form-control btn btn-success"
+                                            value="Valider" />
+                                    </div>
+
+                                </form>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <a [routerLink]="['/login']">J'ai dejà un compte </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                       
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</div>
+</main><!-- End #main -->
+<app-footer></app-footer>

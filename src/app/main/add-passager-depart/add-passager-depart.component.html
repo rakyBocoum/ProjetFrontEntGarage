@@ -1,0 +1,71 @@
+<main>
+    <div  style="color:darkblue" class="container">
+
+        <section  style="color:darkblue" class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
+            >
+            <div class="container">
+                <div  style="color:darkblue" class="row justify-content-center">
+                    <div  style="color:darkblue" class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <img src="assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">SunuGarage</span>
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    
+                                    <p class="text-center small">Renseigner le numero de carte d'identite d'un passager</p>
+                                </div>
+
+                                <form class="row g-3 needs-validation" #userForm="ngForm" (ngSubmit)="ajouterPassager()"
+                                    novalidate style="width: 500px;">
+                                  
+                                    <div class="col-12">
+                                        <label for="yourCni" class="form-label">Cni</label>
+                                        <span class="text-danger">*</span>
+                                        <input type="Cni" name="Cni" id="Cni" required
+                                            [class.is-invalid]="Cni.invalid && Cni.touched "
+                                            [class.is-valid]="Cni.valid" #Cni="ngModel" [(ngModel)]="passager.Cni"
+                                            tabindex="2" class="form-control" placeholder="Cni">
+
+                                        <small class="text-danger" [class.d-none]=" Cni.untouched || Cni.valid">
+                                            Veuillez saisir
+                                            votre numero de carte d'identite </small>
+                                    </div>
+
+                                    
+                                   
+
+                                    
+                                    <div class="col-12">
+                                        <input [disabled]="userForm.form.invalid "
+                                            type="submit" tabindex="4" class="form-control btn btn-success"
+                                            value="Ajouter" />
+                                    </div>
+
+                                </form>
+                               
+
+
+                            </div>
+                        </div>
+
+                        <div class="credits">
+
+                            Designed by @RakyBOCOUM
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->

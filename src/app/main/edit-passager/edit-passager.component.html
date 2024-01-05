@@ -1,0 +1,152 @@
+<p>edit-passager works!</p>
+
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Passager <span class="breadcrumb-item text-secondary small text-warning " style="font-size: 19px;">Editing   <strong>{{user.prenom}} {{user.nom}}</strong></span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="home/accueil">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="home/passager">Passager</a></li>
+          <li class="breadcrumb-item active">{{user.prenom}} {{user.nom}}</li>
+        </ol>
+      </nav>
+    
+
+      
+
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+            <div class="card mb-3">
+
+              <div class="card-body">
+
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4"><div style="text-align: center;" class="text-primary">Modifier  Passager  <strong>{{user.prenom}} {{user.nom}}</strong></div></h5>
+                  
+                </div>
+
+
+                <form #userForm="ngForm"  (ngSubmit)="updatePassager()" style="width: 500px;">
+                  <div class="container mt-3 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                            </div>
+                            <input type="prenom" name="prenom" required [class.is-invalid]="prenom.invalid && prenom.touched " [class.is-valid]="prenom.valid" #prenom="ngModel" [(ngModel)]="user.prenom" tabindex="1" class="form-control" placeholder="Prenom" value=""pattern="[A-Za-z ]+"  minlength="2">
+                            <small class="text-danger" [class.d-none]=" prenom.untouched || prenom.valid"> Veuillez saisir le prenom </small>
+                            <small class="text-danger" [class.d-none]="!prenom.hasError('minlength')">
+                              Le prenom doit contenir au moins deux lettres.</small>
+
+                        </div>
+                        
+                    </div>
+                
+                <div class="container mt-3 form-group">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                              <i class="bi bi-person-fill"></i>
+                          </span>
+                          </div>
+                          <input type="nom" name="nom" id="nom" required [class.is-invalid]="nom.invalid && nom.touched " [class.is-valid]="nom.valid" #nom="ngModel" [(ngModel)]="user.nom" tabindex="2" class="form-control" placeholder="Nom"pattern="[A-Za-z ]+"  minlength="2">
+                          <small class="text-danger" [class.d-none]=" nom.untouched || nom.valid"> Veuillez saisir le nom </small>
+                          <small class="text-danger" [class.d-none]="!nom.hasError('minlength')">
+                            Le nom doit contenir au moins deux lettres.</small>
+                      </div>
+                      
+                  </div>
+              
+              <div class="container mt-3 form-group">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                              <i class="bi bi-person-fill"></i>
+                          </span>
+                          </div>
+                          <input type="adresse" name="adresse" id="adresse" required [class.is-invalid]="adresse.invalid && adresse.touched " [class.is-valid]="adresse.valid" #adresse="ngModel" [(ngModel)]="user.adresse" tabindex="2" class="form-control" placeholder="Adresse"pattern="[A-Za-z ]+"  minlength="2">
+                          <small class="text-danger" [class.d-none]="adresse.untouched || adresse.valid"> Veuillez saisir  l'adresse </small>
+                          <small class="text-danger" [class.d-none]="!adresse.hasError('minlength')">
+                            L'adresse doit contenir au moins deux lettres.</small>
+                      </div>
+                      
+                  </div>
+
+              
+              <div class="container mt-3 form-group">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                              <i class="bi bi-person-fill"></i>
+                          </span>
+                          </div>
+                          <input type="telephone" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone" pattern="[7-9][0-9]{8}" minlength="9" maxlength="9" >
+                          <small class="text-danger" [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir le numero de téléphone </small>
+                          <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">
+                            Veuillez saisir un numéro de téléphone valide.</small>
+                        <small class="text-danger" [class.d-none]="!telephone.hasError('pattern')">
+                            Le numéro de téléphone doit commencer par 7 et être composé de 9 chiffres.</small>
+                      </div>
+                      
+                  </div>
+
+                  <div class="container mt-3 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                            </div>
+                            <input type="Cni" name="Cni" id="Cni" required [class.is-invalid]="Cni.invalid && Cni.touched " [class.is-valid]="Cni.valid" #Cni="ngModel" [(ngModel)]="passager.Cni" tabindex="2" class="form-control" placeholder="Carte ID" pattern="[0-9]*"minlength="13" maxlength="13">
+                            <small class="text-danger" [class.d-none]=" Cni.untouched || Cni.valid"> Veuillez saisir le numéro de carte </small>
+                            <small class="text-danger" [class.d-none]="Cni.valid || Cni.untouched">
+                              Veuillez saisir uniquement des chiffres.</small>
+                              <small class="text-danger" [class.d-none]="Cni.valid || Cni.untouched">
+                                  Le Cni doit comporter 13 chiffres.</small>
+                        </div>
+                        
+                    </div>
+      
+              
+           
+          
+                
+                  <div class="mt-3 form-group">
+          
+                      <input [disabled]="userForm.form.invalid " type="submit"  tabindex="4" class="form-control btn btn-primary"  value="Valider"/>
+          
+                  </div>
+                  <br>
+                  
+                </form>
+                
+                
+                </div>
+             
+            </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main><!-- End #main -->
+
+      
+    <main>

@@ -1,0 +1,100 @@
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Bagage<span class="breadcrumb-item text-secondary small text-warning " style="font-size: 19px;">Modifier bagage <strong>{{bagage.libelle}} {{bagage.quantite}}</strong></span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="home/accueil">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="home/Voiture">bagages</a></li>
+          <li class="breadcrumb-item active">{{bagage.libelle}} {{bagage.quantite}}</li>
+        </ol>
+      </nav>
+    
+
+      
+
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+            <div class="card mb-3">
+
+              <div class="card-body">
+
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4"><div style="text-align: center;" class="text-primary">Modifier  Bagage  <strong>  {{bagage.type}} {{bagage.matricule}}</strong></div></h5>
+                  
+                </div>
+
+
+                <form #userForm="ngForm"  (ngSubmit)="updateBagage()" style="width: 500px;">
+                  <div class="container mt-3 form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                            </div>
+                            <input type="libelle" name="libelle" required [class.is-invalid]="libelle.invalid && libelle.touched " [class.is-valid]="libelle.valid" #libelle="ngModel" [(ngModel)]="bagage.libelle" tabindex="1" class="form-control" placeholder="libelle" value=""pattern="[A-Za-z ]+"  minlength="2">
+                            <small class="text-danger" [class.d-none]=" libelle.untouched || libelle.valid"> Veuillez saisir le type </small>
+                            <small class="text-danger" [class.d-none]="!libelle.hasError('minlength')">
+                              Le prenom doit contenir au moins deux lettres.</small>
+
+                        </div>
+                        
+                    </div>
+                
+                <div class="container mt-3 form-group">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                              <i class="bi bi-person-fill"></i>
+                          </span>
+                          </div>
+                          <input type="quantite" name="quantite" id="quantite" required [class.is-invalid]="quantite.invalid && quantite.touched " [class.is-valid]="quantite.valid" #quantite="ngModel" [(ngModel)]="bagage.quantite" tabindex="2" class="form-control" placeholder="quantite" pattern="[0-9]*">
+                          <small class="text-danger" [class.d-none]=" quantite.untouched || quantite.valid"> Veuillez saisir votre nom </small>
+                          <small class="text-danger" [class.d-none]="quantite.valid || quantite.untouched">
+                            Veuillez saisir uniquement des chiffres.</small>
+                            <small class="text-danger" [class.d-none]="quantite.valid || quantite.untouched">
+                              Veuillez saisir uniquement des chiffres.</small>
+
+                      </div>
+                      
+                  </div>
+              
+            
+              
+           
+          
+                
+                  <div class="mt-3 form-group">
+          
+                      <input [disabled]="userForm.form.invalid " type="submit"  tabindex="4" class="form-control btn btn-primary"  value="Valider"/>
+          
+                  </div>
+                  <br>
+                  
+                </form>
+                
+                
+                </div>
+             
+            </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main><!-- End #main -->
+
+

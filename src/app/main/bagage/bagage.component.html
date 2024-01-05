@@ -1,0 +1,57 @@
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Liste des bagages <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "></span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Bagage</li>
+        </ol>
+      </nav>
+    
+                <div class="card">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #0e09a1">
+                        <!-- <h3>Liste des bagages</h3> -->
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Libelle</th>
+                                <th scope="col">Quantite</th>
+    
+                                <th scope="col">Actions</th>
+            
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let bagage of bagages">
+                                        <td>{{bagage.libelle}}</td>
+                                        <td>{{bagage.quantite}}</td>
+                                       
+                                       
+                                        
+                                        <td>
+                                           
+                                             <a href="/home/editBagage?id={{bagage.id}}"   class="btn btn-secondary"><span class="bi bi-pencil"></span></a>&nbsp;&nbsp;
+                                            <button  (click)="deleteBagage(bagage.id)" class="btn btn-danger " ><span class="bi bi-trash-fill"></span></button>
+                                           
+                                           
+                                        </td> 
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+      
+    
+    
+    <main>
+       
+    
+
+
