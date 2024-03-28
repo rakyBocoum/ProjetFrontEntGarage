@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
@@ -18,7 +19,7 @@ export class AddChauffeurComponent {
   emailError = false;
 
 
-  constructor(private user_service: UserService, private router: Router) { }
+  constructor(private user_service: UserService, private router: Router,private location:Location) { }
 
 
   emailVerif(email: string) {
@@ -79,41 +80,24 @@ export class AddChauffeurComponent {
       this.user.telephone,
       this.user.email,
       this.user.password,
-      this.user.numPermis,
+      this.user.numPermis
     )
 
       .subscribe({
         next: (data) => {
-          if (data.body['message'] == "already") {
-
-            this.showAlertMessage('Erreur', 'Un compte avec ' + this.user.email + ' exite déjà', 'warning')
-
+          if(data.body['message']==="success"){
+            this.location.back();
+            this.router.navigate(["/home/chauffeur"]);
+            this.showAlertMessage("Success", "Chauffeur ajouté(e) avec success ", "success");
+             }
+   
+          else if (data.body['error']=== "already") {
+            this.showAlertMessage('Erreur', 'Un compte avec ' + this.user.email + ' exite déjà', 'warning');
           }
-          else if (data.body['message'] == "chauffeur already exist") {
-            this.showAlertMessage('Erreur', 'Un chauffeur avec ' + this.user.numPermis + ' exite déjà', "warning")
-
+          else if (data.body['error'] === "chauffeur already exist") {
+            this.showAlertMessage('Erreur', 'Un chauffeur avec ' + this.user.numPermis + ' exite déjà', 'warning');
           }
-          else if (data.body['message'] == "success") {
-
-
-            this.user.prenom = ""
-            this.user.nom = ""
-            this.user.adresse = ""
-            this.user.telephone = ""
-            this.user.email = ""
-            this.user.numPermis = ""
-            this.user.password = ""
-            this.passConf = ""
-
-           
-            this.showAlertMessage("Success", "Inscription réussie", "success")
-            window.location.reload();
-            this.router.navigate(["/home/chauffeur"])
-            console.log('Inscription reussi')
-          }
-
-        },
-        
+      }
       })
   }
  
@@ -137,7 +121,7 @@ export class AddChauffeurComponent {
       }
       if (icon == "success") {
 
-        this.router.navigate(["/home/chauffeur"]);
+       // this.router.navigate(["/home/chauffeur"]);
       }
 
     }

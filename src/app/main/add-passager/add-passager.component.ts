@@ -60,6 +60,7 @@ export class AddPassagerComponent {
 
     }
   }
+  
 
   passwordConfirmVerif(pass1: string, pass2: string) {
     if (pass1 != pass2) {
@@ -83,41 +84,25 @@ export class AddPassagerComponent {
     ).subscribe(
       {
         next: (data) => {
-
-          if (data.body.message == 'successfully') {
-            
-
-            // const Toast = Swal.mixin({
-            //   toast: true,
-            //   position: 'top-end',
-            //   showConfirmButton: false,
-            //   timer: 3000,
-            //   timerProgressBar: true,
-            //   didOpen: (toast) => {
-            //     toast.addEventListener('mouseenter', Swal.stopTimer);
-            //     toast.addEventListener('mouseleave', Swal.resumeTimer);
-            //   },
-            // });
-
-            // Toast.fire({
-            //   icon: 'success',
-            //   title: 'Inscription réussie',
-            // });
-
-            this.showAlertMessage('Success', 'Inscription réussie', 'success');
-          }
-          else if (data.body.message == 'already') {
+          console.log('Le message renvoye '+data.body.error);
+          
+          if(data.body['message']==="success"){
+            this.location.back();
+            this.router.navigate(["/home/passager"]);
+            this.showAlertMessage("Success", "Passager ajouté(e) avec success ", "success");
+             }
+   
+          else if (data.body['error']=== "already") {
             this.showAlertMessage('Erreur', 'Un compte avec ' + this.user.email + ' exite déjà', 'warning');
           }
+          else if (data.body['error'] === "CNI already") {
+            this.showAlertMessage('Erreur', 'Un compte avec ' + this.user.Cni + ' exite déjà', 'warning');
+          }
+
+        
     }  });
 
   }
-  testAlert() {
-    this.showAlertMessage('Test', 'Ceci est un test', 'info');
-  }
-
-
-
   showAlertMessage(title: string, message: string, icon: any) {
     Swal.fire({
       title: title,

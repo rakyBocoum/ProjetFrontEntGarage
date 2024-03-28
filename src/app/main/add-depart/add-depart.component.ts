@@ -51,9 +51,10 @@ export class AddDepartComponent
             if(data.body.message =="success"){
               this.showAlertMessage("Success","Depart ajoute ","success");
               this.router.navigate(["/home/depart"]);
-            }else{
-              console.log(data.body.message)
-              this.showAlertMessage("Error","Error when saving informations ","warning")
+            }
+            else if(data.body['error']==="Error when creating  Depart"){
+             // console.log(data.body.message)
+              this.showAlertMessage("Erreur","Veuillez mettre une bonne date et heure et une destination ","warning")
             }
 
           },error:(err) => {

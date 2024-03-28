@@ -30,41 +30,47 @@ import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
 import { MesDepartsComponent } from './main/mes-departs/mes-departs.component';
 import { AccueilPrincipalComponent } from './accueil-principal/accueil-principal.component';
 import { PertesComponent } from './main/pertes/pertes.component';
+import { AdminGuard } from './service/admin.guard';
 
 const routes: Routes = [
-  {path:'',component:AccueilPrincipalComponent},
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
-  {path:'home', component:HomeComponent,
-  children:[
-    {path:'accueil',component:AccueilComponent},
-    {path:'voiture',component:VoitureComponent},
-    {path:'depart',component:DepartComponent},
-    {path:'passager',component:PassagerComponent},
-    {path:'chauffeur',component:ChauffeurComponent},
-    {path:'createChauffeur',component:AddChauffeurComponent},
-    {path:'editChauffeur',component:EditChauffeurComponent}, 
-    {path:'editPassager',component:EditPassagerComponent},
-    {path:'editVoiture',component:EditVoitureComponent},
-    {path:'editBagage',component:EditBagageComponent},
-    {path:'ajouterVoiture',component:AddVoitureComponent},
-    {path:"ajouterPassager",component:AddPassagerComponent},
-    {path:"ajouterBagage",component:AddBagagesComponent},
-    {path:"ajouterDepart",component:AddDepartComponent},
-    {path:"depart",component:DepartComponent},
-    {path:"addPassager",component:AddPassagerDepartComponent},
-    {path:"passagerDepart",component:PassagerDepartComponent},
-    {path:"pertes",component:PertesComponent},
-   // {path:"ajouterDepart",component:AddDepartBag}
-    {path:"bagage",component:BagageComponent},
-  ],canActivate:[AuthGuard]},
-  {path:'Home',component:Home1Component,
-  children:[
-    {path:"Accueil",component:Accueil1Component},
-    {path:"bagages",component:MesBagagesComponent},
-    {path:"departs",component:MesDepartsComponent},
+  { path: '', component: AccueilPrincipalComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
-  ],canActivate:[AuthGuard]
+  {
+    path: 'home', component: HomeComponent,
+    canActivate: [AdminGuard],
+    children:
+      [
+        { path: 'accueil', component: AccueilComponent,canActivate: [AdminGuard] },
+        { path: 'voiture', component: VoitureComponent ,canActivate: [AdminGuard] },
+        { path: 'depart', component: DepartComponent ,canActivate: [AdminGuard]  },
+        { path: 'passager', component: PassagerComponent ,canActivate: [AdminGuard]  },
+        { path: 'chauffeur', component: ChauffeurComponent  ,canActivate: [AdminGuard] },
+        { path: 'createChauffeur', component: AddChauffeurComponent ,canActivate: [AdminGuard]  },
+        { path: 'editChauffeur', component: EditChauffeurComponent ,canActivate: [AdminGuard]  },
+        { path: 'editPassager', component: EditPassagerComponent  ,canActivate: [AdminGuard] },
+        { path: 'editVoiture', component: EditVoitureComponent ,canActivate: [AdminGuard]  },
+        { path: 'editBagage', component: EditBagageComponent  ,canActivate: [AdminGuard] },
+        { path: 'ajouterVoiture', component: AddVoitureComponent ,canActivate: [AdminGuard]  },
+        { path: "ajouterPassager", component: AddPassagerComponent  ,canActivate: [AdminGuard] },
+        { path: "ajouterBagage", component: AddBagagesComponent  ,canActivate: [AdminGuard] },
+        { path: "ajouterDepart", component: AddDepartComponent  ,canActivate: [AdminGuard] },
+        { path: "depart", component: DepartComponent ,canActivate: [AdminGuard]  },
+        { path: "addPassager", component: AddPassagerDepartComponent ,canActivate: [AdminGuard]  },
+        { path: "passagerDepart", component: PassagerDepartComponent  ,canActivate: [AdminGuard] },
+        { path: "pertes", component: PertesComponent  ,canActivate: [AdminGuard] },
+        { path: "bagage", component: BagageComponent ,canActivate: [AdminGuard]  },
+      ]
+  },
+  {
+    path: 'Home', component: Home1Component,
+    children: [
+      { path: "Accueil", component: Accueil1Component },
+      { path: "bagages", component: MesBagagesComponent },
+      { path: "departs", component: MesDepartsComponent },
+
+    ], canActivate: [AuthGuard]
   },
 ];
 

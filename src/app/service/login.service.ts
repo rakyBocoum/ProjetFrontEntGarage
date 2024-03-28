@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class LoginService {
+  userRole: any;
 
 
   constructor(private http : HttpClient) { }
@@ -32,10 +33,14 @@ export class LoginService {
         sessionStorage.setItem('nom', userData.body.user.nom);
         sessionStorage.setItem('userId', userData.body.user.id)
         sessionStorage.setItem('role', userData.body.user.role);
+       
         return userData;
       })
     );
     
+  }
+  getUserRole(): string {
+    return this.userRole;
   }
   
 

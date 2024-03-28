@@ -5,18 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard  
+export class AdminGuard  
 {
   
-   
+  constructor(private loginService: LoginService, private router: Router) {}
 
-    constructor(private loginService: LoginService, private router: Router) {}
-
-  canActivate(): boolean 
-  {
+  canActivate(): boolean {
     const role = sessionStorage.getItem('role');
 
-    if (role === "passager") {
+    if (role === 'admin') {
       // L'utilisateur a le rôle d'admin, autorise l'accès
       return true;
     } else {
@@ -24,5 +21,5 @@ export class AuthGuard
       this.router.navigate(['login']);
       return false;
     }
-}
+  }
 }

@@ -85,7 +85,7 @@
                                         <input type="numPermis" name="numPermis" id="numPermis" required
                                             [class.is-invalid]="numPermis.invalid && numPermis.touched "
                                             [class.is-valid]="numPermis.valid" #numPermis="ngModel" [(ngModel)]="user.numPermis"
-                                            tabindex="2" class="form-control" placeholder="numero de Permis" pattern="[0-9]*">
+                                            tabindex="2" class="form-control" placeholder="numero de Permis" pattern="[0-9]{8}" minlength="8" maxlength="8">
 
                                         <small class="text-danger" [class.d-none]=" numPermis.untouched || numPermis.valid">
                                             Veuillez saisir
